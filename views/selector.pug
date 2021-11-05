@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  p.
+    Welcome to #{title} <br>
+    This is the second hands-on in pug!<br>
+  - var image_names=["fairmontbanffsprings.jpg","ram_inn.jpg","raynhamhall.jpg","stanleyhotelstaircase.jpg","tao-dan-park.jpg"]
+    - for(let i=0; i<3; i++) {
+      - let ran=Math.floor(Math.random()*5)
+        img(src=`/images/${image_names[ran]}` alt="pic here" width=300 height=300)
+    - }

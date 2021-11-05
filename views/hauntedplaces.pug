@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  p.
+    Welcome to #{title}
+
+  -
+    let results=[{"address":"1 Raynham Hall, East Raynham, Fakenham NR21 7EP, UK","year":1835,"description":"Brown Lady of Raynham Hall"},{"address":"8 Potters Pond, Wotton-under-Edge GL12 7HF, United Kingdom","year":1500,"description":"The Witch's Room"},{"address":"405 Spray Ave, Banff, AB T1L 1J4, Canada","year":1920,"description":"Ghost Bride"},{"address":"333 E Wonderview Ave, Estes Park, CO 80517","year":1911,"description":"Room 217"},{"address":"Trương Định, Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh, Vietnam","year":1989,"description":"Ghost of a young man"}]
+
+  div.container-fluid
+    div.row
+
+    -
+    each item,val in results
+      div.col-sm-2 The address is #{item.address}, with the incident "#{item.description}" happened in #{item.year}.
+      <br>

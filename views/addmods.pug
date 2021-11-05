@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1= title
+  p.
+    Welcome to #{title} <br>
+    This is the second hands-on in pug!<br>
+
+  - rows=Number(query.rows)
+  - cols=Number(query.cols)
+  if (Number.isInteger(rows)==false || Number.isInteger(cols)==false)
+    p Either rows or cols is not an integer. <br>
+  else if (rows<1 || rows>6)
+    p Rows out of range. <br>
+  else if (cols<1 || cols>6)
+    p Columns out of range. <br>
+  else 
+    table#outer
+      - for(let i=0; i<rows; i++) {
+        tr#middle
+          - for(let j=0; j<cols; j++) {
+            td=(i + j) % rows
+          - }
+      - }
+
+
