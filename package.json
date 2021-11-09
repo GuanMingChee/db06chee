@@ -1,5 +1,5 @@
 {
-  "name": "fwb06chee",
+  "name": "db06chee",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -18,6 +18,6 @@
   "main": "app.js",
   "author": "Guan Ming Chee",
   "license": "ISC",
-  "description": "webapps lab and assignment",
+  "description": "webapps lab and assignment 11",
   "devDependencies": {}
 }
