@@ -2,8 +2,20 @@
 
 var Haunted_places = require("../models/haunted_places");
 // List of all Costumes
+/**
 exports.haunted_places_list = function(req, res) {
 res.send('NOT IMPLEMENTED: List of haunted places');
+};
+*/
+exports.haunted_places_list = async function(req, res) {
+    try{
+    theHaunted_places = await Haunted_places.find();
+    res.send(theHaunted_places);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
 };
 // for a specific Costume.
 exports.haunted_places_detail = function(req, res) {
