@@ -17,6 +17,7 @@ var addmodsRouter = require('./routes/addmods');
 var usersRouter = require('./routes/users');
 var selectorRouter = require('./routes/selector');
 var Haunted_places = require("./models/haunted_places");
+var resourceRouter = require('./routes/resource');
 
 var app = express();
 
@@ -35,7 +36,8 @@ app.use('/addmods', addmodsRouter);
 app.use('/hauntedplaces', hauntedplacesRouter);
 app.use('/users', usersRouter);
 app.use('/selector', selectorRouter);
-app.use('/haunted_places',Haunted_places);
+//app.use('/haunted_places',Haunted_places);
+app.use('/resource', resourceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

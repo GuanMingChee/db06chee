@@ -1,5 +1,5 @@
 //var Costume = require('../models/costume');
-/**
+
 var Haunted_places = require("../models/haunted_places");
 // List of all Costumes
 exports.haunted_places_list = function(req, res) {
@@ -21,4 +21,3 @@ res.send('NOT IMPLEMENTED: Haunted places delete DELETE ' + req.params.id);
 exports.haunted_places_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: Haunted places update PUT' + req.params.id);
 };
-*/
