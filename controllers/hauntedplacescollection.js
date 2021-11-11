@@ -41,7 +41,7 @@ res.send('NOT IMPLEMENTED: Haunted places create POST');
 */
 // Handle Costume create on POST. 
 
-exports.costume_create_post = async function(req, res) {
+exports.haunted_places_create_post = async function(req, res) {
     console.log(req.body)
     let document = new Haunted_places();
     // We are looking for a body, since POST does not have query parameters.
