@@ -13,5 +13,7 @@ const haunted_places_controllers= require('../controllers/hauntedplacescollectio
 var router = express.Router();
 /* GET costumes */ 
 router.get('/', haunted_places_controllers.haunted_places_view_all_Page );
+// GET request for one costume.
+router.get('/hauntedplaces/:id', haunted_places_controllers.haunted_places_detail);
 module.exports = router;
 
