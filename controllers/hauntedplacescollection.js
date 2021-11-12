@@ -39,11 +39,11 @@ res.send('NOT IMPLEMENTED: Detail of haunted places: ' + req.params.id);
 exports.haunted_places_detail = async function(req, res) {
     console.log("detail" + req.params.id)
     try {
-    result = await Haunted_places.findById( req.params.id)
-    res.send(result)
+        result = await Haunted_places.findById( req.params.id)
+        res.send(result)
     } catch (error) {
-    res.status(500)
-    res.send(`{"error": document for id ${req.params.id} not found`);
+        res.status(500)
+        res.send(`{"error": document for id ${req.params.id} not found`);
     }
     };
 // Handle Costume create on POST.
@@ -79,6 +79,25 @@ exports.haunted_places_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: Haunted places delete DELETE ' + req.params.id);
 };
 // Handle Costume update form on PUT.
+/**
 exports.haunted_places_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: Haunted places update PUT' + req.params.id);
+};
+*/
+// Handle Costume update form on PUT.
+exports.haunted_places_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await Haunted_places.findById( req.params.id)
+// Do updates of properties
+        if(req.body.address) toUpdate.address = req.body.address;
+        if(req.body.year) toUpdate.year = req.body.year;
+        if(req.body.description) toUpdate.description = req.body.description;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
+    }
 };
