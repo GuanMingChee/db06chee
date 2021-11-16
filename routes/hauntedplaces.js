@@ -15,5 +15,7 @@ var router = express.Router();
 router.get('/', haunted_places_controllers.haunted_places_view_all_Page );
 // GET request for one costume.
 router.get('/hauntedplaces/:id', haunted_places_controllers.haunted_places_detail);
+/* GET detail costume page */
+router.get('/detail', haunted_places_controllers.haunted_places_view_one_Page);
 module.exports = router;
 

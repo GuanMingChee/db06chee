@@ -75,9 +75,11 @@ exports.haunted_places_create_post = async function(req, res) {
 };
 
 // Handle Costume delete form on DELETE.
+/**
 exports.haunted_places_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: Haunted places delete DELETE ' + req.params.id);
 };
+*/
 // Handle Costume delete on DELETE.
 exports.haunted_places_delete = async function(req, res) {
     console.log("delete " + req.params.id)
@@ -113,3 +115,16 @@ exports.haunted_places_update_put = async function(req, res) {
         res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
     }
 };
+// Handle a show one view with id specified by query
+exports.haunted_places_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await Haunted_places.findById( req.query.id)
+    res.render('haunted_placesdetail',
+    { title: 'Haunted places Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
