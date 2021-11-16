@@ -78,6 +78,18 @@ exports.haunted_places_create_post = async function(req, res) {
 exports.haunted_places_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: Haunted places delete DELETE ' + req.params.id);
 };
+// Handle Costume delete on DELETE.
+exports.haunted_places_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await Haunted_places.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+};
 // Handle Costume update form on PUT.
 /**
 exports.haunted_places_update_put = function(req, res) {
