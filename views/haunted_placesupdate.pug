@@ -1,0 +1,31 @@
+extends layout
+
+block content
+ h1= title
+ - let hauntedplacesid = toShow._id
+ - let hauntedplacesaddress = toShow.address
+ - let hauntedplacesyear = toShow.year
+ - let hauntedplacesdescription = toShow.description
+ div.row(class='mb-2')
+   div.mr-1 ID is
+   div #{hauntedplacesid}
+ - let actionid = "/resource/haunted_places/" + hauntedplacesid
+  form(id='Haunted_placesForm', action=actionid, method="PUT")
+    div.form-group
+     label.hauntedplacesAttr(for='address') Address of haunted place: 
+     input#address(type='text', name='address', value= address)
+    div.form-group
+     label.hauntedplacesAttr(for='year') Year of incident happened: 
+     input#year(type='number', name='year', value= year)
+    div.form-group
+     label.hauntedplacesAttr(for='description') Description of the incident: 
+     input#description(type='text', name='description', value= description)
+    input(type="submit")
+
+  script.
+    document.forms['Haunted_placesForm'].addEventListener('submit', (event) => {
+     event.preventDefault();
+     // TODO do something here to show user that form is being submitted
+     fetch(event.target.action, {method: 'PUT', body: new URLSearchParams(new FormData(event.target))}).then((resp) => {return resp.json(); }).then((body) => {alert("Update succeded")}).catch((error) => {alert("Update failed " + error )});});
+
+    

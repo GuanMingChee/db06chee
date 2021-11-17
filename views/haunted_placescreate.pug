@@ -4,18 +4,18 @@ block content
  h1= title
   form(id='Haunted_placesForm', action="/resource/haunted_places", method="POST")
     div.form-group
-     label.costumeAttr(for='address') Haunted Places Address
-     input#costume_type(type='text', name='address')
+     label.hauntedplacesAttr(for='address') Address of haunted place: 
+     input#address(type='text', name='address')
     div.form-group
-     label.costumeAttr(for='year') Haunted Places Year
-     input#size(type='number', name='yea')
+     label.hauntedplacesAttr(for='year') Year of incident happened: 
+     input#year(type='number', name='year')
     div.form-group
-     label.costumeAttr(for='description') Haunted Places Description
-     input#cost(type='text', name='description')
-     input(type="submit")
+     label.hauntedplacesAttr(for='description') Description of the incident: 
+     input#description(type='text', name='description')
+    input(type="submit")
 
   script.
-    document.forms['CostumeForm'].addEventListener('submit', (event) => {
+    document.forms['Haunted_placesForm'].addEventListener('submit', (event) => {
      event.preventDefault();
      // TODO do something here to show user that form is being submitted
      fetch(event.target.action, {method: 'POST', body: new URLSearchParams(new FormData(event.target))}).then((resp) => {return resp.json(); }).then((body) => {alert("Save succeded")}).catch((error) => {alert("Save failed " + error )});});
