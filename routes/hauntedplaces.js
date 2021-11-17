@@ -19,5 +19,7 @@ router.get('/hauntedplaces/:id', haunted_places_controllers.haunted_places_detai
 router.get('/detail', haunted_places_controllers.haunted_places_view_one_Page);
 /* GET create costume page */
 router.get('/create', haunted_places_controllers.haunted_places_create_Page);
+/* GET create update page */
+router.get('/update', haunted_places_controllers.haunted_places_update_Page);
 module.exports = router;
 

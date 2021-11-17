@@ -117,12 +117,12 @@ exports.haunted_places_update_put = async function(req, res) {
 };
 // Handle a show one view with id specified by query
 exports.haunted_places_view_one_Page = async function(req, res) {
-    console.log("single view for id " + req.params.id)
+    console.log("single view for id " + req.query.id)
     try{
-    result = await Haunted_places.findById( req.params.id)
+    result = await Haunted_places.findById( req.query.id)
     res.render('haunted_placesdetail',
     { title: 'Haunted places Detail', toShow: result });
-    }
+    }   
     catch(err){
     res.status(500)
     res.send(`{'error': '${err}'}`);
@@ -135,6 +135,19 @@ exports.haunted_places_create_Page = function(req, res) {
     console.log("create view")
     try{
     res.render('haunted_placescreate', { title: 'Haunted places Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+};
+// Handle building the view for updating a costume.
+// query provides the id
+exports.haunted_places_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await Haunted_places.findById(req.query.id)
+    res.render('haunted_placesupdate', { title: 'Haunted places Update', toShow: result });
     }
     catch(err){
     res.status(500)

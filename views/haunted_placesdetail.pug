@@ -1,8 +1,21 @@
 extends layout
-
 block content
  h1= title
-  - let hauntedplacesid = toShow._id
-  - let hauntedplacesaddress = toShow.address
-  - let hauntedplacesyear = toShow.year
-  - let hauntedplacesdescription = toShow.description
+ - let hauntedplacesid = toShow._id
+ - let hauntedplacesaddress = toShow.address
+ - let hauntedplacesyear = toShow.year
+ - let hauntedplacesdescription = toShow.description
+
+ div
+   div.row
+     div(class='hauntedplacesAttr mr-3') Haunted places ID is:
+     div #{hauntedplacesid}
+   div.row
+     div(class='hauntedplacesAttr mr-3') Haunted places address is:
+     div #{hauntedplacesaddress}
+   div.row
+     div(class='hauntedplacesAttr mr-3') Haunted places year is:
+     div #{hauntedplacesyear}
+   div.row
+     div(class='hauntedplacesAttr mr-3') Haunted places description is:
+     div #{hauntedplacesdescription}
