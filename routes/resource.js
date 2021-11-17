@@ -17,5 +17,5 @@ router.put('/haunted_places/:id', haunted_places_controller.haunted_places_updat
 router.get('/haunted_places/:id', haunted_places_controller.haunted_places_detail);
 // GET request for list of all Costume items.
 router.get('/haunted_places', haunted_places_controller.haunted_places_list);
-router.get('/detail', haunted_places_controller.haunted_places_view_one_Page);
+//router.get('/detail', haunted_places_controller.haunted_places_view_one_Page);
 module.exports = router;

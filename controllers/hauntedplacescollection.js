@@ -117,9 +117,9 @@ exports.haunted_places_update_put = async function(req, res) {
 };
 // Handle a show one view with id specified by query
 exports.haunted_places_view_one_Page = async function(req, res) {
-    console.log("single view for id " + req.query.id)
+    console.log("single view for id " + req.params.id)
     try{
-    result = await Haunted_places.findById( req.query.id)
+    result = await Haunted_places.findById( req.params.id)
     res.render('haunted_placesdetail',
     { title: 'Haunted places Detail', toShow: result });
     }
@@ -127,4 +127,17 @@ exports.haunted_places_view_one_Page = async function(req, res) {
     res.status(500)
     res.send(`{'error': '${err}'}`);
     }
-    };
+};
+// Handle building the view for creating a costume.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.haunted_places_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('haunted_placescreate', { title: 'Haunted places Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+};
