@@ -1,0 +1,53 @@
+extends layout
+
+block content
+ h1= title
+ if (toShow == null)
+  h2 No instance to delete
+ else
+  - let hauntedplacesid = toShow._id
+  - let hauntedplacesaddress = toShow.address
+  - let hauntedplacesyear = toShow.year
+  - let hauntedplacesdescription = toShow.description
+  - let actionid = "/resource/haunted_places/" + hauntedplacesid
+  script let actionid = "#{actionid}"
+  div
+    div.row
+     div(class='hauntedplacesAttr mr-3') ID of haunted place: 
+     div #{hauntedplacesid}
+    div.row
+     div(class='hauntedplacesAttr mr-3') Address of haunted place: 
+     div #{hauntedplacesaddress}
+    div.row
+     div(class='hauntedplacesAttr mr-3') Year of incident happened: 
+     div #{hauntedplacesyear}
+    div.row
+     div(class='hauntedplacesAttr mr-3') Description of the incident: 
+     div #{hauntedplacesdescription}
+    
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+
+  script.
+    function cancel() {
+      // Go back to the home page for the costume collection
+      window.location.href='/hauntedplaces'
+    }
+
+  script.
+   function deleteOnid() {
+     console.log("starting delete")
+     // delete first
+     fetch(actionid, {
+      method: 'DELETE' // Don't need a body for the delete
+     }).then((resp) => {
+      return resp.json(); // or resp.text() or whatever the server sends
+     }).then((body) => {
+      alert("Delete succeded")
+      window.location.href='/hauntedplaces'
+      // TODO handle body
+     }).catch((error) => {
+      // TODO handle error
+      alert("Delete failed " + error )
+     });
+   }
