@@ -1,13 +1,15 @@
 extends layout
 
 block content
-  h1= title
-  p.
-    Welcome to #{title} <br>
-    This is the second hands-on in pug!<br>
-
-
-  button(type="button", class="btn btn-success", onClick="update()") Press Me!
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/hauntedplaces") Take me to costumes
+    br
+    a(href="/logout") Logout
   
   <br>
   <br>
