@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;*/
+const haunted_places_controllers= require('../controllers/hauntedplacescollection');
 var express = require('express');
 var passport = require('passport');
 var router = express.Router();
@@ -49,6 +50,8 @@ router.get('/login', function(req, res) {
 res.render('login', { title: 'Haunted Places App Login', user : req.user });
 });
 router.post('/login', passport.authenticate('local'), function(req, res) {
+if(req.session.returnTo)
+  res.redirect(req.session.returnTo);
 res.redirect('/');
 });
 router.get('/logout', function(req, res) {

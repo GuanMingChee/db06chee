@@ -26,6 +26,6 @@ block content
     document.forms['Haunted_placesForm'].addEventListener('submit', (event) => {
      event.preventDefault();
      // TODO do something here to show user that form is being submitted
-     fetch(event.target.action, {method: 'PUT', body: new URLSearchParams(new FormData(event.target))}).then((resp) => {return resp.json(); }).then((body) => {alert("Update succeded")}).catch((error) => {alert("Update failed " + error )});});
+     fetch(event.target.action, {method: 'PUT', body: new URLSearchParams(new FormData(event.target))}).then((resp) => {return resp.json(); }).then((body) => {alert("Update succeded");window.location.href='/hauntedplaces';}).catch((error) => {alert("Update failed " + error )});});
 
     

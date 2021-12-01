@@ -19,3 +19,12 @@ block content
    div.row
      div(class='hauntedplacesAttr mr-3') Description of the incident at the haunted place is:
      div #{hauntedplacesdescription}
+   div.row
+     - let destination3 = `dispatch(\"/hauntedplaces/")`
+     button.btn( class="btn-primary", onclick= destination3) Back
+
+   script.
+     function dispatch(path){
+      window.location.href=path
+     }
+      
